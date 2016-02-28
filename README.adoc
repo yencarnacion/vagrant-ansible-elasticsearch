@@ -1,5 +1,5 @@
 == vagrant-ansible-cassandra-cluster
-Provision a 1 node elasticsearch Vagrant VM Ansible, Vagrant, and Virtualbox.
+Provision a 1 node elasticsearch Vagrant VM using Ansible, Vagrant, and Virtualbox.
 
 === License
 The MIT License (MIT).  See LICENSE.adoc
