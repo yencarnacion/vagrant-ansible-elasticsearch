@@ -17,7 +17,6 @@
 #    - { regexp: 'network\.host', line: 'network.host: localhost' }
      - { regexp: 'network\.host', line: 'network.host: {{hostvars[inventory_hostname].ansible_eth1.ipv4.address}}' }
      - { regexp: 'network\.port', line: 'network.port: 9200' }
-
   notify: restart elasticsearch
 
 - name: Start Elasticsearch.
