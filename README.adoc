@@ -1,8 +1,11 @@
-== vagrant-ansible-cassandra-cluster
+== vagrant-ansible-elasticsearch
 Provision a 1 node elasticsearch Vagrant VM using Ansible, Vagrant, and Virtualbox.
 
 === License
 The MIT License (MIT).  See LICENSE.adoc
+
+=== Other
+Kibana and some plugins (see below) are also installed.
 
 === How to run
 .To get this project working, perform the minimum steps:
@@ -13,7 +16,14 @@ The MIT License (MIT).  See LICENSE.adoc
 
 The node will be running on: 192.168.33.10
 
-To SSH into a node do `vagrant ssh elastic01`.
-To test elasticsearch is up do `curl http://192.168.33.10:9200`
+To SSH into the node do `vagrant ssh elastic01`.   
+ +
+To test elasticsearch is up do `curl http://192.168.33.10:9200`   
+ +
+To test kibana is up visit http://192.168.33.10:5601/   
+
+.Also, the following plugins are installed:  
+* Marvel http://192.168.33.10:5601/app/marvel  
+* Sense http://192.168.33.10:5601/app/sense
 
 Remember to do `vagrant destroy` when you are done.

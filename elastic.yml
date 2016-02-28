@@ -13,3 +13,7 @@
       sudo: True
     - role: geerlingguy.ansible-role-elasticsearch
       become: True
+    - role: kibana
+      become: True
+    - role: kibana-plugins
+      become: True

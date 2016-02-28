@@ -1,0 +1,38 @@
+---
+- name: Install License plugin into Elasticsearch
+  shell: bin/plugin install license
+  args:
+    chdir: /usr/share/elasticsearch/
+
+- name: Install Marvel plugin into Elasticsearch
+  shell: bin/plugin install marvel-agent
+  args:
+    chdir: /usr/share/elasticsearch/
+
+- name: Restart Elasticsearch
+  service: name=elasticsearch state=restarted
+
+- name: Restart Kibana
+  service: name=kibana state=restarted
+
+- name: Install Marvel plugin into Kibana
+  shell: bin/kibana plugin --install elasticsearch/marvel/latest
+  args:
+    chdir: /opt/kibana/
+
+- name: Restart Elasticsearch
+  service: name=elasticsearch state=restarted
+
+- name: Restart Kibana
+  service: name=kibana state=restarted
+
+- name: Install Sense plugin into Elasticsearch
+  shell: bin/kibana plugin --install elastic/sense
+  args:
+    chdir: /opt/kibana/
+
+- name: Restart Elasticsearch
+  service: name=elasticsearch state=restarted
+
+- name: Restart Kibana
+  service: name=kibana state=restarted
