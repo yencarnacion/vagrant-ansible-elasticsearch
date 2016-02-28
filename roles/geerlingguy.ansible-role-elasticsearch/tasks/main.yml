@@ -1,0 +1,24 @@
+---
+- include: setup-RedHat.yml
+  when: ansible_os_family == 'RedHat'
+
+- include: setup-Debian.yml
+  when: ansible_os_family == 'Debian'
+
+- name: Configure Elasticsearch.
+  lineinfile: >
+    dest=/etc/elasticsearch/elasticsearch.yml
+    regexp="{{ item.regexp }}"
+    line="{{ item.line }}"
+    state=present
+  with_items:
+#    - { regexp: '^script\.inline', line: 'script.inline: on' }
+#    - { regexp: '^script\.indexed', line: 'script.indexed: on' }
+#    - { regexp: 'network\.host', line: 'network.host: localhost' }
+     - { regexp: 'network\.host', line: 'network.host: {{hostvars[inventory_hostname].ansible_eth1.ipv4.address}}' }
+     - { regexp: 'network\.port', line: 'network.port: 9200' }
+
+  notify: restart elasticsearch
+
+- name: Start Elasticsearch.
+  service: name=elasticsearch state=started enabled=yes

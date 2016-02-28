@@ -1,0 +1,19 @@
+== vagrant-ansible-cassandra-cluster
+Provision a 1 node elasticsearch Vagrant VM Ansible, Vagrant, and Virtualbox.
+
+=== License
+The MIT License (MIT).  See LICENSE.adoc
+
+=== How to run
+.To get this project working, perform the minimum steps:
+----
+ $ vagrant up
+ $ ansible-playbook elastic.yml
+----
+
+The node will be running on: 192.168.33.10
+
+To SSH into a node do `vagrant ssh elastic01`.
+To test elasticsearch is up do `curl http://192.168.33.10:9200`
+
+Remember to do `vagrant destroy` when you are done.
